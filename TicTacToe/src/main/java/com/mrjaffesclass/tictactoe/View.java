@@ -1,16 +1,17 @@
 package com.mrjaffesclass.tictactoe;
-import javax.swing.JButton; 
+
+import javax.swing.JButton;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author student
  */
 public class View extends javax.swing.JFrame {
+
     boolean whoseTurn;
 
     /**
@@ -204,10 +205,11 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -217,17 +219,16 @@ public class View extends javax.swing.JFrame {
     private void onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClick
         // TODO add your handling code here:
         System.out.println("Clicked!");
-        JButton button = (JButton)evt.getSource();
+        JButton button = (JButton) evt.getSource();
         String player = (this.whoseTurn) ? "X" : "O";
         button.setText(player);
+        String winner = this.isWinner();
         if (!winner.equals("")) {
-            jLabel1.setText(winner + "WINS THE GAME!");
-            this.gameOver = true;
-            }
-        this.whoseTurn = !this.whoseTurn
+            jLabel1.setText(winner + " WINS THE GAME!!");
         }
+        this.whoseTurn = !this.whoseTurn;
     }//GEN-LAST:event_onClick
-    private String isWinner() {
+private String isWinner() {
   // Get the text contents of each button.  
   // Be sure you're accessing the
   // buttons in the order you want.  
@@ -244,6 +245,7 @@ public class View extends javax.swing.JFrame {
   status[2][0] = jButton7.getText();
   status[2][1] = jButton8.getText();
   status[2][2] = jButton9.getText();
+
   // Check the rows and columns for a tic tac toe
   for (int i=0; i<3; i++) {
     if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]))
@@ -251,6 +253,7 @@ public class View extends javax.swing.JFrame {
     if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
       return status[0][i];
   }
+
   // Check the diagonals
   if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2]))
     return status[0][0];
@@ -260,40 +263,11 @@ public class View extends javax.swing.JFrame {
   // If we haven't found it, then return a blank string
   return "";
 }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
+/**
+* @param args the command line arguments
+*/
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
