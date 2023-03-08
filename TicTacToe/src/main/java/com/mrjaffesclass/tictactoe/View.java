@@ -242,55 +242,60 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("Clicked!");
         JButton button = (JButton) evt.getSource();
-        String player = (this.whoseTurn) ? "X" : "O";
-        button.setText(player);
-        String winner = this.isWinner();
-        if (!winner.equals("")) {
-            jLabel1.setText("Player " + winner+ " WINS THE GAME!!");
-            this.gameOver = true;
+        if (button.getText().equals("")) {
+            String player = (this.whoseTurn) ? "X" : "O";
+            button.setText(player);
+            String winner = this.isWinner();
+            if (!winner.equals("")) {
+                jLabel1.setText("Player " + winner + " WINS THE GAME!!");
+                this.gameOver = true;
+            }
+                this.whoseTurn = !this.whoseTurn;
         }
-        this.whoseTurn = !this.whoseTurn;
     }//GEN-LAST:event_onClick
-private String isWinner() {
-  // Get the text contents of each button.  
-  // Be sure you're accessing the
-  // buttons in the order you want.  
-  // The Netbeans UI sometimes mixes up
-  // the numbers on the button names so they're not in the 
-  // order you expect
-  String[][] status = new String[3][3];
-  status[0][0] = jButton1.getText();
-  status[0][1] = jButton2.getText();
-  status[0][2] = jButton3.getText();
-  status[1][0] = jButton13.getText();
-  status[1][1] = jButton14.getText();
-  status[1][2] = jButton15.getText();
-  status[2][0] = jButton16.getText();
-  status[2][1] = jButton17.getText();
-  status[2][2] = jButton18.getText();
+    private String isWinner() {
+        // Get the text contents of each button.  
+        // Be sure you're accessing the
+        // buttons in the order you want.  
+        // The Netbeans UI sometimes mixes up
+        // the numbers on the button names so they're not in the 
+        // order you expect
+        String[][] status = new String[3][3];
+        status[0][0] = jButton1.getText();
+        status[0][1] = jButton2.getText();
+        status[0][2] = jButton3.getText();
+        status[1][0] = jButton13.getText();
+        status[1][1] = jButton14.getText();
+        status[1][2] = jButton15.getText();
+        status[2][0] = jButton16.getText();
+        status[2][1] = jButton17.getText();
+        status[2][2] = jButton18.getText();
 
-  // Check the rows and columns for a tic tac toe
-  for (int i=0; i<3; i++) {
-    if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]))
-      return status[i][0];
-    if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
-      return status[0][i];
-  }
+        // Check the rows and columns for a tic tac toe
+        for (int i = 0; i < 3; i++) {
+            if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2])) && !status[i][0].equals("")) {
+                return status[i][0];
+            }
+            if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i])) {
+                return status[0][i];
+            }
+        }
 
-  // Check the diagonals
-  if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2]))
-    return status[0][0];
-  if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
-    return status[0][2];
+        // Check the diagonals
+        if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2])) {
+            return status[0][0];
+        }
+        if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0])) {
+            return status[0][2];
+        }
 
-  // If we haven't found it, then return a blank string
-  return "";
-}
+        // If we haven't found it, then return a blank string
+        return "";
+    }
 
-/**
-* @param args the command line arguments
-*/
-
+    /**
+     * @param args the command line arguments
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
