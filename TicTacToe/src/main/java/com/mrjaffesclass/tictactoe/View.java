@@ -14,6 +14,7 @@ public class View extends javax.swing.JFrame {
 
     boolean whoseTurn;
     boolean gameOver;
+    boolean tie;
 
     /**
      * Creates new form View
@@ -242,10 +243,15 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("Clicked!");
         JButton button = (JButton) evt.getSource();
-        if (button.getText().equals("")) {
+        if (button.getText().equals("")&& !this.gameOver) {
             String player = (this.whoseTurn) ? "X" : "O";
             button.setText(player);
             String winner = this.isWinner();
+            boolean tie = this.isTie();
+            if (tie) {
+                jLabel1.setText("This game is a Tie!");
+            }
+            
             if (!winner.equals("")) {
                 jLabel1.setText("Player " + winner + " WINS THE GAME!!");
                 this.gameOver = true;
@@ -273,10 +279,10 @@ public class View extends javax.swing.JFrame {
 
         // Check the rows and columns for a tic tac toe
         for (int i = 0; i < 3; i++) {
-            if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2])) && !status[i][0].equals("")) {
+            if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]) && !status[i][0].equals("")) {
                 return status[i][0];
             }
-            if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i])) {
+            if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]) && !status[0][i].equals(""))  {
                 return status[0][i];
             }
         }
