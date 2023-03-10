@@ -298,6 +298,27 @@ public class View extends javax.swing.JFrame {
         // If we haven't found it, then return a blank string
         return "";
     }
+    
+    private boolean isTie() {
+        String[][] status = new String[3][3];
+        status[0][0] = jButton1.getText();
+        status[0][1] =
+        status[0][2] = 
+        status[1][0] =
+        status[1][1] = 
+        status[1][2] = 
+        status[2][0] =
+        status[2][1] = 
+        status[2][2] =
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (status[i][j].equals("")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
