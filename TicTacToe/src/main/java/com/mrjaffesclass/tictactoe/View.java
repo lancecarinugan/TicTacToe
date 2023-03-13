@@ -169,7 +169,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(153, 0, 204));
+        jLabel3.setBackground(new java.awt.Color(204, 204, 0));
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 3, 16)); // NOI18N
         jLabel3.setText("TIC-TAC-TOE");
 
@@ -217,7 +217,6 @@ public class View extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,14 +301,14 @@ public class View extends javax.swing.JFrame {
     private boolean isTie() {
         String[][] status = new String[3][3];
         status[0][0] = jButton1.getText();
-        status[0][1] =
-        status[0][2] = 
-        status[1][0] =
-        status[1][1] = 
-        status[1][2] = 
-        status[2][0] =
-        status[2][1] = 
-        status[2][2] =
+        status[0][1] = jButton2.getText();
+        status[0][2] = jButton3.getText();
+        status[1][0] = jButton13.getText();
+        status[1][1] = jButton14.getText();
+        status[1][2] = jButton15.getText();
+        status[2][0] = jButton16.getText();
+        status[2][1] = jButton17.getText();
+        status[2][2] = jButton18.getText();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (status[i][j].equals("")) {
